@@ -8,6 +8,16 @@
 		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	
-	<bean id="myTestBean" class="com.wjk.spring.test.beans.MyTestBean"></bean>
-
+	<!-- <bean id="myTestBean" class="com.wjk.spring.test.beans.MyTestBean"></bean> -->
+	
+	<!-- spring bean的三种实例化）创建对象）方式 （xml方式）-->
+	
+	<!-- 1,类中的无参构造函数创建对象 -->
+	<bean id = "person" class="com.wjk.spring.test.beans.xml.Person"></bean>
+	<!-- 2,静态工厂创建对象 （创建静态的方法，返回类对象）-->
+	<bean id = "staticPersonFactory" class="com.wjk.spring.test.beans.xml.SpringBeanStaticFactory" factory-method="getPerson"></bean>
+	<!-- 3,实例工厂创建对象 （创建不是静态的方法，返回类对象）-->
+	<!-- 先创建工厂对象 -->
+	<bean id = "personFactory" class="com.wjk.spring.test.beans.xml.SpringBeanFactory"></bean>
+	<bean id = "person1" factory-bean="personFactory" factory-method="getPerson"/>
 </beans>
